@@ -14,8 +14,14 @@ during boot: it is data for the compositor.
 dotfiles/.config/niri/config.kdl          the session: input, layout, spawns, binds
 dotfiles/.config/waybar/config.jsonc      the bar
 dotfiles/.config/waybar/style.css         the bar's colours
-dotfiles/.config/waybar/scripts/          niri IPC helpers for the bar
+dotfiles/.config/waybar/scripts/           niri IPC helpers for the bar
+wallpapers/final.png                      the default wallpaper artwork
 ```
+
+`wallpapers/` is outside `dotfiles/`, so the build does not unpack it into a
+home. The session's `swaybg` spawn points at
+`/usr/share/copper/wallpapers/copper-default.png` in the Copper Linux tree,
+which carries these bytes; this copy is where the artwork itself is kept.
 
 `workspaces.sh` and `window.sh` talk to niri over its IPC socket
 (`$XDG_RUNTIME_DIR/niri.sock`). They use `niri msg --json` and `jq`, both of
