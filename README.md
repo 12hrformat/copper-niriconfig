@@ -25,9 +25,13 @@ which carries these bytes; this copy is where the artwork itself is kept.
 
 `workspaces.sh` and `window.sh` talk to niri over its IPC socket
 (`$XDG_RUNTIME_DIR/niri.sock`). They use `niri msg --json` and `jq`, both of
-which the image ships. The bar is intentionally built from `custom` modules:
-noble's waybar 0.9.24 predates niri's own modules, and installing a second,
-newer copy of waybar would drag in a second GTK stack.
+which the image ships. Each prints once and then follows niri's event
+stream, so a still desktop costs the bar nothing: the modules set no
+`interval`, and a `restart-interval` of one second re-runs a script that
+exited because the compositor's socket was not up yet when the bar started.
+The bar is intentionally built from `custom` modules: noble's waybar 0.9.24
+predates niri's own modules, and installing a second, newer copy of waybar
+would drag in a second GTK stack.
 
 ## Editing
 

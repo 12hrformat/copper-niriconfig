@@ -10,7 +10,13 @@
 
   "custom/workspaces": {
     "exec": "~/.config/waybar/scripts/workspaces.sh",
-    "interval": 1,
+    // no "interval" on purpose: the script prints one line per niri event,
+    // and waybar updates the module on every line it reads
+    // the script exits when niri's socket is missing -- the bar can start
+    // before the compositor is ready, or the compositor can die -- and this
+    // makes waybar run it again a second later instead of freezing the
+    // module; the old every-second polling masked exactly this race
+    "restart-interval": 1,
     "escape": false,
     "tooltip": false,
     "on-click": "niri msg action toggle-overview"
@@ -18,7 +24,9 @@
 
   "custom/window": {
     "exec": "~/.config/waybar/scripts/window.sh",
-    "interval": 1,
+    // no "interval" on purpose: same reason as custom/workspaces above
+    // and the same self-heal if the script exits before niri is ready
+    "restart-interval": 1,
     "max-length": 60
   },
 
