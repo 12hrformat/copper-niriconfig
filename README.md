@@ -15,6 +15,8 @@ dotfiles/.config/niri/config.kdl          the session: input, layout, spawns, bi
 dotfiles/.config/waybar/config.jsonc      the bar
 dotfiles/.config/waybar/style.css         the bar's colours
 dotfiles/.config/waybar/scripts/           niri IPC helpers for the bar
+dotfiles/.config/kitty/kitty.conf         the terminal: opacity, colours, the
+                                          fastfetch greeting on every window
 wallpapers/final.png                      the default wallpaper artwork
 ```
 
